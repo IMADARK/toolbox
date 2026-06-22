@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dracaufeu - Carte Pokémon Fan Art</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@700;900&family=Inter:wght@600;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #1a0a00 0%, #0a0a0a 100%);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Floating embers */
+  .embers {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ember {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: #ff6600;
+    border-radius: 50%;
+    animation: float-up linear infinite;
+    box-shadow: 0 0 6px #ff6600, 0 0 12px #ff4400;
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(100vh) scale(1); opacity: 1; }
+    100% { transform: translateY(-20vh) scale(0); opacity: 0; }
+  }
+
+  .card-wrapper {
+    position: relative;
+    z-index: 10;
+    perspective: 1200px;
+  }
+
+  .card {
+    width: 380px;
+    height: 540px;
+    border-radius: 18px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: card-float 4s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+  }
+
+  @keyframes card-float {
+    0%, 100% { transform: translateY(0) rotateX(2deg); }
+    50% { transform: translateY(-12px) rotateX(-2deg); }
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, #2a1000 0%, #1a0800 50%, #0d0400 100%);
+    border: 3px solid;
+    border-image: linear-gradient(135deg, #ffaa00, #ff6600, #ffcc00, #ff4400, #ffaa00) 1;
+    box-shadow:
+      0 0 30px rgba(255, 102, 0, 0.4),
+      0 0 60px rgba(255, 68, 0, 0.2),
+      0 20px 60px rgba(0, 0, 0, 0.8),
+      inset 0 0 40px rgba(255, 102, 0, 0.05);
+  }
+
+  /* Holographic overlay */
+  .holo-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+      125deg,
+      transparent 0%,
+      rgba(255, 200, 50, 0.08) 20%,
+      transparent 40%,
+      rgba(255, 100, 50, 0.1) 60%,
+      transparent 80%,
+      rgba(255, 220, 100, 0.06) 100%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 50;
+    animation: holo-shift 6s ease-in-out infinite;
+  }
+
+  @keyframes holo-shift {
+    0%, 100% { opacity: 0.6; transform: translateX(-10%); }
+    50% { opacity: 1; transform: translateX(10%); }
+  }
+
+  .holo-sparkle {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255, 200, 0, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(255, 100, 0, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, rgba(255, 150, 50, 0.08) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 51;
+    animation: sparkle-move 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes sparkle-move {
+    0% { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.1) rotate(3deg); }
+  }
+
+  /* Card header */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px 8px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .card-name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.8), 0 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+  }
+
+  .card-hp {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #ff4400;
+    text-shadow: 0 0 15px rgba(255, 68, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hp-label {
+    font-size: 10px;
+    color: #ffaa00;
+    letter-spacing: 2px;
+  }
+
+  .fire-type {
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, #ff6600, #cc3300);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+  }
+
+  /* Card art area */
+  .card-art {
+    margin: 4px 12px;
+    height: 220px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 150, 0, 0.3);
+    background: linear-gradient(180deg, #0d0200 0%, #1a0500 40%, #2a0a00 100%);
+  }
+
+  /* SVG Charizard */
+  .charizard-scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .charizard-scene svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Fire particles in art */
+  .art-fire {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background:
+      radial-gradient(ellipse at 30% 90%, rgba(255, 100, 0, 0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(255, 50, 0, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(255, 150, 0, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+    animation: fire-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes fire-glow {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+
+  .stage-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    color: #ffcc00;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 200, 0, 0.2);
+  }
+
+  /* Card info section */
+  .card-info {
+    padding: 8px 16px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .pokemon-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .pokemon-species {
+    font-size: 10px;
+    color: #aa7744;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .pokemon-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #664422;
+    font-weight: 700;
+  }
+
+  /* Attacks */
+  .attack {
+    background: linear-gradient(90deg, rgba(255, 100, 0, 0.1) 0%, transparent 100%);
+    border-left: 3px solid #ff6600;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .attack-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .attack-name {
+    font-size: 14px;
+    font-weight: 900;
+    color: #ffcc66;
+    text-shadow: 0 0 8px rgba(255, 150, 0, 0.3);
+  }
+
+  .attack-cost {
+    display: flex;
+    gap: 3px;
+  }
+
+  .energy-ball {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff8800, #cc3300);
+    box-shadow: 0 0 4px rgba(255, 100, 0, 0.5);
+  }
+
+  .energy-colorless {
+    background: radial-gradient(circle at 30% 30%, #cccccc, #666666);
+    box-shadow: 0 0 4px rgba(200, 200, 200, 0.3);
+  }
+
+  .attack-damage {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #ff4400;
+    text-shadow: 0 0 10px rgba(255, 68, 0, 0.5);
+  }
+
+  .attack-desc {
+    font-size: 9px;
+    color: #997755;
+    margin-top: 3px;
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  /* Weakness/Resistance/Retreat */
+  .card-footer-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 16px;
+    border-top: 1px solid rgba(255, 150, 0, 0.1);
+    position: relative;
+    z-index: 10;
+  }
+
+  .stat-block {
+    text-align: center;
+  }
+
+  .stat-label {
+    font-size: 7px;
+    color: #664422;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .stat-value {
+    font-size: 12px;
+    font-weight: 900;
+    color: #ffaa44;
+    margin-top: 2px;
+  }
+
+  /* Card bottom */
+  .card-bottom {
+    padding: 4px 16px 10px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .flavor-text {
+    font-size: 8px;
+    color: #665533;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+    border-top: 1px solid rgba(255, 150, 0, 0.08);
+    padding-top: 6px;
+  }
+
+  .card-set-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .rarity-stars {
+    color: #ffaa00;
+    font-size: 10px;
+    text-shadow: 0 0 6px rgba(255, 170, 0, 0.5);
+  }
+
+  .set-number {
+    font-size: 8px;
+    color: #553322;
+    font-weight: 700;
+  }
+
+  .illustrator {
+    font-size: 7px;
+    color: #443322;
+  }
+
+  /* Instruction */
+  .instruction {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #664422;
+    font-size: 12px;
+    opacity: 0.6;
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating embers background -->
+<div class="embers" id="embers"></div>
+
+<div class="card-wrapper">
+  <div class="card" id="card">
+    <div class="card-inner">
+      <div class="holo-overlay"></div>
+      <div class="holo-sparkle"></div>
+
+      <!-- Header -->
+      <div class="card-header">
+        <span class="card-name">DRACAUFEU</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="card-hp">
+            <span class="hp-label">HP</span>
+            <span>330</span>
+          </div>
+          <div class="fire-type">🔥</div>
+        </div>
+      </div>
+
+      <!-- Art -->
+      <div class="card-art">
+        <div class="art-fire"></div>
+        <div class="stage-badge">ÉTAPE 2</div>
+        <div class="charizard-scene">
+          <svg viewBox="0 0 356 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background fire -->
+            <defs>
+              <radialGradient id="fireGlow" cx="50%" cy="80%" r="60%">
+                <stop offset="0%" stop-color="#ff6600" stop-opacity="0.6"/>
+                <stop offset="50%" stop-color="#ff3300" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+              <radialGradient id="bodyGrad" cx="40%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#ff8833"/>
+                <stop offset="50%" stop-color="#dd5511"/>
+                <stop offset="100%" stop-color="#993300"/>
+              </radialGradient>
+              <radialGradient id="bellyGrad" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#ffcc66"/>
+                <stop offset="100%" stop-color="#ffaa33"/>
+              </radialGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="fireFilter">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- Ambient fire glow -->
+            <ellipse cx="178" cy="200" rx="160" ry="80" fill="url(#fireGlow)"/>
+
+            <!-- Tail flame -->
+            <g filter="url(#fireFilter)">
+              <path d="M90 160 Q75 130 85 100 Q90 80 80 55 Q95 75 100 95 Q105 75 95 50 Q110 70 110 100 Q115 130 105 155" fill="#ff6600" opacity="0.9">
+                <animate attributeName="d" dur="0.8s" repeatCount="indefinite"
+                  values="M90 160 Q75 130 85 100 Q90 80 80 55 Q95 75 100 95 Q105 75 95 50 Q110 70 110 100 Q115 130 105 155;
+                          M90 160 Q78 125 88 95 Q85 72 75 48 Q98 72 102 90 Q108 68 98 42 Q115 65 112 95 Q118 128 105 155;
+                          M90 160 Q75 130 85 100 Q90 80 80 55 Q95 75 100 95 Q105 75 95 50 Q110 70 110 100 Q115 130 105 155"/>
+              </path>
+              <path d="M92 155 Q82 125 90 100 Q92 82 85 65 Q98 80 100 100 Q105 130 100 155" fill="#ffaa00" opacity="0.8">
+                <animate attributeName="d" dur="0.6s" repeatCount="indefinite"
+                  values="M92 155 Q82 125 90 100 Q92 82 85 65 Q98 80 100 100 Q105 130 100 155;
+                          M92 155 Q85 120 92 95 Q90 78 82 60 Q100 78 102 95 Q108 125 100 155;
+                          M92 155 Q82 125 90 100 Q92 82 85 65 Q98 80 100 100 Q105 130 100 155"/>
+              </path>
+              <path d="M94 150 Q88 130 93 108 Q95 92 90 78 Q100 90 100 108 Q103 128 98 150" fill="#ffdd44" opacity="0.7"/>
+            </g>
+
+            <!-- Tail -->
+            <path d="M100 165 Q85 170 95 160" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1"/>
+
+            <!-- Left wing -->
+            <g>
+              <path d="M145 95 L80 45 L95 80 L60 35 L88 75 L50 25 L85 70 L130 90" fill="#336688" opacity="0.8" stroke="#224466" stroke-width="1"/>
+              <path d="M145 95 L100 55 L115 85 L85 50 L110 80 L130 90" fill="#4488aa" opacity="0.6"/>
+            </g>
+
+            <!-- Right wing -->
+            <g>
+              <path d="M215 95 L280 45 L265 80 L300 35 L272 75 L310 25 L275 70 L230 90" fill="#336688" opacity="0.8" stroke="#224466" stroke-width="1"/>
+              <path d="M215 95 L260 55 L245 85 L275 50 L250 80 L230 90" fill="#4488aa" opacity="0.6"/>
+            </g>
+
+            <!-- Body -->
+            <ellipse cx="178" cy="145" rx="50" ry="55" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1.5"/>
+
+            <!-- Belly -->
+            <ellipse cx="178" cy="155" rx="30" ry="35" fill="url(#bellyGrad)" opacity="0.8"/>
+
+            <!-- Left arm -->
+            <path d="M135 130 Q115 135 110 145 Q108 150 112 155 L118 152 Q120 148 125 142 Q130 138 140 135" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1"/>
+            <!-- Claws -->
+            <path d="M110 145 L105 140 M112 148 L106 146 M112 152 L107 152" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Right arm -->
+            <path d="M221 130 Q241 135 246 145 Q248 150 244 155 L238 152 Q236 148 231 142 Q226 138 216 135" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1"/>
+            <path d="M246 145 L251 140 M244 148 L250 146 M244 152 L249 152" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Legs -->
+            <path d="M155 190 Q148 200 145 210 L150 210 L155 205 L160 210 L165 210 Q162 200 160 190" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1"/>
+            <path d="M196 190 Q189 200 186 210 L191 210 L196 205 L201 210 L206 210 Q203 200 201 190" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1"/>
+
+            <!-- Neck -->
+            <path d="M165 110 Q170 95 178 90 Q186 95 191 110" fill="url(#bodyGrad)"/>
+
+            <!-- Head -->
+            <ellipse cx="178" cy="82" rx="28" ry="22" fill="url(#bodyGrad)" stroke="#aa4400" stroke-width="1.5"/>
+
+            <!-- Horns -->
+            <path d="M158 68 L148 48 L155 65" fill="#dd7722" stroke="#aa5500" stroke-width="1"/>
+            <path d="M198 68 L208 48 L201 65" fill="#dd7722" stroke="#aa5500" stroke-width="1"/>
+
+            <!-- Eyes -->
+            <ellipse cx="168" cy="78" rx="6" ry="7" fill="#fff"/>
+            <ellipse cx="188" cy="78" rx="6" ry="7" fill="#fff"/>
+            <ellipse cx="169" cy="78" rx="3.5" ry="5" fill="#2244cc"/>
+            <ellipse cx="189" cy="78" rx="3.5" ry="5" fill="#2244cc"/>
+            <ellipse cx="170" cy="76" rx="1.5" ry="2" fill="#fff"/>
+            <ellipse cx="190" cy="76" rx="1.5" ry="2" fill="#fff"/>
+
+            <!-- Nostrils -->
+            <circle cx="174" cy="86" r="1.5" fill="#aa4400"/>
+            <circle cx="182" cy="86" r="1.5" fill="#aa4400"/>
+
+            <!-- Mouth -->
+            <path d="M168 90 Q178 95 188 90" fill="none" stroke="#aa4400" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Fire breath -->
+            <g filter="url(#fireFilter)">
+              <path d="M195 85 Q220 70 260 55 Q280 48 300 50 Q280 55 265 62 Q250 70 240 80 Q260 65 285 58 Q265 72 250 82 Q235 90 220 88" fill="#ff6600" opacity="0.85">
+                <animate attributeName="d" dur="1s" repeatCount="indefinite"
+                  values="M195 85 Q220 70 260 55 Q280 48 300 50 Q280 55 265 62 Q250 70 240 80 Q260 65 285 58 Q265 72 250 82 Q235 90 220 88;
+                          M195 85 Q225 68 265 50 Q288 42 308 46 Q285 52 270 58 Q255 68 245 78 Q268 60 292 52 Q270 68 255 80 Q238 88 220 88;
+                          M195 85 Q220 70 260 55 Q280 48 300 50 Q280 55 265 62 Q250 70 240 80 Q260 65 285 58 Q265 72 250 82 Q235 90 220 88"/>
+              </path>
+              <path d="M198 84 Q225 72 255 60 Q270 55 280 58 Q268 62 258 68 Q245 78 235 84" fill="#ffaa00" opacity="0.7">
+                <animate attributeName="d" dur="0.7s" repeatCount="indefinite"
+                  values="M198 84 Q225 72 255 60 Q270 55 280 58 Q268 62 258 68 Q245 78 235 84;
+                          M198 84 Q228 68 260 55 Q278 50 288 54 Q275 58 262 65 Q250 75 238 82;
+                          M198 84 Q225 72 255 60 Q270 55 280 58 Q268 62 258 68 Q245 78 235 84"/>
+              </path>
+              <path d="M200 83 Q220 75 245 65 Q258 60 265 63 Q255 66 248 72 Q238 80 230 84" fill="#ffdd44" opacity="0.6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="card-info">
+        <div class="pokemon-meta">
+          <span class="pokemon-species">Pokémon Flamme · 1.7m · 90.5kg</span>
+          <span class="pokemon-number">N° 006</span>
+        </div>
+
+        <!-- Attack 1 -->
+        <div class="attack">
+          <div class="attack-header">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="attack-cost">
+                <div class="energy-ball"></div>
+                <div class="energy-ball"></div>
+              </div>
+              <span class="attack-name">Déflagration Royale</span>
+            </div>
+            <span class="attack-damage">180</span>
+          </div>
+          <div class="attack-desc">Défaussez 2 Énergies Feu attachées à ce Pokémon.</div>
+        </div>
+
+        <!-- Attack 2 -->
+        <div class="attack">
+          <div class="attack-header">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="attack-cost">
+                <div class="energy-ball"></div>
+                <div class="energy-ball"></div>
+                <div class="energy-ball"></div>
+                <div class="energy-ball energy-colorless"></div>
+              </div>
+              <span class="attack-name">Enfer Cramoisi</span>
+            </div>
+            <span class="attack-damage">330</span>
+          </div>
+          <div class="attack-desc">Ce Pokémon s'inflige 50 dégâts. Le Pokémon Défenseur est maintenant Brûlé.</div>
+        </div>
+      </div>
+
+      <!-- Footer stats -->
+      <div class="card-footer-stats">
+        <div class="stat-block">
+          <div class="stat-label">Faiblesse</div>
+          <div class="stat-value">💧 ×2</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Résistance</div>
+          <div class="stat-value">🌿 -30</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Retraite</div>
+          <div class="stat-value">⚪⚪⚪</div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="card-bottom">
+        <div class="flavor-text">
+          Il crache un feu si chaud qu'il peut faire fondre la roche. Il est la cause d'incendies de forêts incontrôlables.
+        </div>
+        <div class="card-set-info">
+          <span class="illustrator">Illus. Fan Art 2026</span>
+          <span class="rarity-stars">★ ★ ★</span>
+          <span class="set-number">006/151 UR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="instruction">Bouge la souris sur la carte ✨</div>
+
+<script>
+  // Embers
+  const embersContainer = document.getElementById('embers');
+  for (let i = 0; i < 40; i++) {
+    const ember = document.createElement('div');
+    ember.className = 'ember';
+    ember.style.left = Math.random() * 100 + '%';
+    ember.style.animationDuration = (3 + Math.random() * 5) + 's';
+    ember.style.animationDelay = Math.random() * 5 + 's';
+    ember.style.width = (2 + Math.random() * 4) + 'px';
+    ember.style.height = ember.style.width;
+    ember.style.opacity = 0.3 + Math.random() * 0.7;
+    embersContainer.appendChild(ember);
+  }
+
+  // 3D tilt effect
+  const card = document.getElementById('card');
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.animation = 'none';
+    card.style.transform = `rotateY(${x * 25}deg) rotateX(${-y * 25}deg) scale(1.05)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.animation = 'card-float 4s ease-in-out infinite';
+    card.style.transform = '';
+  });
+</script>
+</body>
+</html>
