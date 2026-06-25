@@ -10,15 +10,15 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://imadark.github.io/toolbox/">
     <!-- Open Graph (reseaux sociaux) -->
-    <meta property="og:title" content="ToolBox - 9 Outils Gratuits en Ligne">
-    <meta property="og:description" content="Roue aleatoire, generateur de pseudo, chronometre, de, minuteur, pile ou face et plus. Gratuit, rapide, sans inscription.">
+    <meta property="og:title" content="ToolBox - 18 Outils Gratuits en Ligne">
+    <meta property="og:description" content="Roue aleatoire, generateur de pseudo, chronometre, de, minuteur, pile ou face, calculatrice, convertisseur et plus. Gratuit, rapide, sans inscription.">
     <meta property="og:url" content="https://imadark.github.io/toolbox/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ToolBox - 9 Outils Gratuits en Ligne">
-    <meta name="twitter:description" content="Roue, chrono, generateur de pseudo, de, minuteur... Tous tes outils au meme endroit. Gratuit et sans inscription.">
+    <meta name="twitter:title" content="ToolBox - 18 Outils Gratuits en Ligne">
+    <meta name="twitter:description" content="Roue, chrono, calculatrice, convertisseur, generateur de pseudo, de, minuteur... 18 outils gratuits au meme endroit.">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6518397246939182" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
@@ -510,6 +510,24 @@
         .donate-banner p { color: #aaa; font-size: 0.9rem; margin-bottom: 12px; }
         .donate-banner .btn { font-size: 0.9rem; }
 
+        /* === SHARE BUTTONS === */
+        .share-banner {
+            text-align: center; margin: 20px auto; max-width: 500px;
+        }
+        .share-banner p { color: #aaa; font-size: 0.9rem; margin-bottom: 12px; }
+        .share-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .share-btns a {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px; border-radius: 10px; font-size: 0.85rem;
+            text-decoration: none; color: #fff; font-weight: 600; transition: transform 0.2s;
+        }
+        .share-btns a:hover { transform: scale(1.05); }
+        .share-twitter { background: #1da1f2; }
+        .share-reddit { background: #ff4500; }
+        .share-whatsapp { background: #25d366; }
+        .share-telegram { background: #0088cc; }
+        .share-copy { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; }
+
         /* === LEGAL === */
         .legal-footer {
             text-align: center; padding: 30px 20px 20px; color: #333;
@@ -619,6 +637,18 @@
     <!-- PUB ACCUEIL -->
     <div class="ad-slot" id="ad-home-bottom">
         <ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- SHARE -->
+    <div class="share-banner">
+        <p>Partage ToolBox avec tes potes !</p>
+        <div class="share-btns">
+            <a class="share-twitter" href="https://twitter.com/intent/tweet?text=Je%20viens%20de%20d%C3%A9couvrir%20ToolBox%20%3A%2018%20outils%20gratuits%20en%20ligne%20!&url=https://imadark.github.io/toolbox/" target="_blank" rel="noopener">𝕏 Twitter</a>
+            <a class="share-reddit" href="https://www.reddit.com/submit?url=https://imadark.github.io/toolbox/&title=ToolBox%20-%2018%20outils%20gratuits%20en%20ligne" target="_blank" rel="noopener">🟠 Reddit</a>
+            <a class="share-whatsapp" href="https://wa.me/?text=Regarde%20ce%20site%20avec%2018%20outils%20gratuits%20!%20https://imadark.github.io/toolbox/" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="share-telegram" href="https://t.me/share/url?url=https://imadark.github.io/toolbox/&text=ToolBox%20-%2018%20outils%20gratuits" target="_blank" rel="noopener">✈️ Telegram</a>
+            <a class="share-copy" onclick="navigator.clipboard.writeText('https://imadark.github.io/toolbox/');this.textContent='✅ Copié !';setTimeout(()=>this.textContent='📋 Copier le lien',2000)">📋 Copier le lien</a>
+        </div>
     </div>
 
     <!-- DONATION -->
