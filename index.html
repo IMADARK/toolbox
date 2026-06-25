@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolBox - 18 Outils Gratuits en Ligne | Roue, Chrono, Calculatrice</title>
-    <meta name="description" content="ToolBox : 18 outils gratuits en ligne - Roue, Pseudo, De, Chrono, Minuteur, Pile ou Face, Calculatrice, Compteur, Convertisseur, Tirage au sort, Couleurs, Lorem Ipsum, Todo, et plus. Sans inscription.">
+    <title>ToolBox - 24 Outils Gratuits en Ligne | Roue, Chrono, Calculatrice, QR Code, Morse</title>
+    <meta name="description" content="ToolBox : 24 outils gratuits en ligne - Roue, Pseudo, De, Chrono, Minuteur, Pile ou Face, Calculatrice, Compteur, Convertisseur, Tirage au sort, Couleurs, Lorem Ipsum, Todo, et plus. Sans inscription.">
     <meta name="keywords" content="outils en ligne, roue aleatoire, generateur pseudo, de personnalise, chronometre en ligne, minuteur, pile ou face, generateur mot de passe, toolbox, outils gratuits">
     <meta name="author" content="IMADARK">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://imadark.github.io/toolbox/">
     <!-- Open Graph (reseaux sociaux) -->
-    <meta property="og:title" content="ToolBox - 18 Outils Gratuits en Ligne">
+    <meta property="og:title" content="ToolBox - 24 Outils Gratuits en Ligne">
     <meta property="og:description" content="Roue aleatoire, generateur de pseudo, chronometre, de, minuteur, pile ou face, calculatrice, convertisseur et plus. Gratuit, rapide, sans inscription.">
     <meta property="og:url" content="https://imadark.github.io/toolbox/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ToolBox - 18 Outils Gratuits en Ligne">
-    <meta name="twitter:description" content="Roue, chrono, calculatrice, convertisseur, generateur de pseudo, de, minuteur... 18 outils gratuits au meme endroit.">
+    <meta name="twitter:title" content="ToolBox - 24 Outils Gratuits en Ligne">
+    <meta name="twitter:description" content="Roue, chrono, calculatrice, convertisseur, generateur de pseudo, de, minuteur... 24 outils gratuits au meme endroit.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧰</text></svg>">
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBox","url":"https://imadark.github.io/toolbox/","description":"24 outils gratuits en ligne : roue, chrono, calculatrice, convertisseur, generateur de pseudo et mot de passe, et plus.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"IMADARK"}}</script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KQKJYFZ49"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KQKJYFZ49');</script>
@@ -636,6 +639,30 @@
             <span class="icon">🔤</span>
             <div class="label">Transformateur Texte</div>
         </div>
+        <div class="menu-btn" onclick="showPage('pomodoro')">
+            <span class="icon">🍅</span>
+            <div class="label">Pomodoro</div>
+        </div>
+        <div class="menu-btn" onclick="showPage('qrcode')">
+            <span class="icon">📱</span>
+            <div class="label">QR Code</div>
+        </div>
+        <div class="menu-btn" onclick="showPage('agecalc')">
+            <span class="icon">🎂</span>
+            <div class="label">Calcul d'Age</div>
+        </div>
+        <div class="menu-btn" onclick="showPage('bmi')">
+            <span class="icon">⚖️</span>
+            <div class="label">IMC</div>
+        </div>
+        <div class="menu-btn" onclick="showPage('percentage')">
+            <span class="icon">💯</span>
+            <div class="label">Pourcentage</div>
+        </div>
+        <div class="menu-btn" onclick="showPage('morse')">
+            <span class="icon">📡</span>
+            <div class="label">Code Morse</div>
+        </div>
     </div>
 
     <!-- PUB ACCUEIL -->
@@ -662,7 +689,7 @@
     </div>
 
     <footer class="legal-footer">
-        Fait avec ❤️ &mdash; ToolBox 2025 &mdash; par IMADARK<br>
+        Fait avec ❤️ &mdash; ToolBox 2026 &mdash; par IMADARK<br>
         <a href="#" onclick="showPage('privacy');return false">Politique de confidentialite</a> &bull;
         <a href="#" onclick="showPage('legal');return false">Mentions legales</a> &bull;
         <a href="mailto:adil.tadlaoui@gmail.com">Contact</a>
@@ -1020,6 +1047,121 @@
             <button class="btn btn-sm btn-outline" onclick="copyTextTools()">Copier</button>
         </div>
         <div id="texttools-output"></div>
+    </div>
+</div>
+
+<!-- POMODORO -->
+<div id="pomodoro" class="page">
+    <button class="back-btn" onclick="goHome()">← Retour</button>
+    <h2>🍅 Pomodoro</h2>
+    <div style="text-align:center">
+        <div id="pomo-display" style="font-size:5rem;font-weight:800;margin:30px 0">25:00</div>
+        <div id="pomo-status" style="color:#aaa;margin-bottom:20px">Travail</div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="btn" onclick="startPomodoro()">Demarrer</button>
+            <button class="btn btn-outline" onclick="pausePomodoro()">Pause</button>
+            <button class="btn btn-outline" onclick="resetPomodoro()">Reset</button>
+        </div>
+        <div style="margin-top:20px;color:#aaa;font-size:0.9rem">
+            <span>Sessions : <strong id="pomo-count">0</strong></span>
+        </div>
+        <div style="margin-top:15px;display:flex;gap:10px;justify-content:center">
+            <button class="btn btn-sm" onclick="setPomoMode(25,'Travail')">25 min</button>
+            <button class="btn btn-sm" onclick="setPomoMode(5,'Pause courte')">5 min</button>
+            <button class="btn btn-sm" onclick="setPomoMode(15,'Pause longue')">15 min</button>
+        </div>
+    </div>
+</div>
+
+<!-- QR CODE -->
+<div id="qrcode" class="page">
+    <button class="back-btn" onclick="goHome()">← Retour</button>
+    <h2>📱 Generateur QR Code</h2>
+    <div style="text-align:center">
+        <input type="text" id="qr-input" placeholder="Entre un texte ou un lien..." style="width:100%;max-width:400px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;margin-bottom:15px">
+        <br>
+        <button class="btn" onclick="generateQR()">Generer</button>
+        <div id="qr-output" style="margin-top:20px"></div>
+    </div>
+</div>
+
+<!-- AGE CALCULATOR -->
+<div id="agecalc" class="page">
+    <button class="back-btn" onclick="goHome()">← Retour</button>
+    <h2>🎂 Calcul d'Age</h2>
+    <div style="text-align:center">
+        <label style="color:#aaa">Date de naissance :</label><br>
+        <input type="date" id="age-input" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;margin:10px 0">
+        <br>
+        <button class="btn" onclick="calcAge()">Calculer</button>
+        <div id="age-result" style="margin-top:20px;font-size:1.5rem;font-weight:700"></div>
+        <div id="age-detail" style="margin-top:10px;color:#aaa"></div>
+    </div>
+</div>
+
+<!-- BMI / IMC -->
+<div id="bmi" class="page">
+    <button class="back-btn" onclick="goHome()">← Retour</button>
+    <h2>⚖️ Calcul IMC</h2>
+    <div style="text-align:center">
+        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-bottom:15px">
+            <div>
+                <label style="color:#aaa">Poids (kg)</label><br>
+                <input type="number" id="bmi-weight" placeholder="70" style="padding:12px;width:120px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;margin-top:5px">
+            </div>
+            <div>
+                <label style="color:#aaa">Taille (cm)</label><br>
+                <input type="number" id="bmi-height" placeholder="175" style="padding:12px;width:120px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;margin-top:5px">
+            </div>
+        </div>
+        <button class="btn" onclick="calcBMI()">Calculer</button>
+        <div id="bmi-result" style="margin-top:20px;font-size:2rem;font-weight:800"></div>
+        <div id="bmi-category" style="margin-top:10px;font-size:1.1rem"></div>
+    </div>
+</div>
+
+<!-- POURCENTAGE -->
+<div id="percentage" class="page">
+    <button class="back-btn" onclick="goHome()">← Retour</button>
+    <h2>💯 Calculatrice de Pourcentage</h2>
+    <div style="text-align:center;max-width:400px;margin:0 auto">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px;margin-bottom:15px">
+            <label style="color:#aaa">Combien font X% de Y ?</label><br>
+            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px">
+                <input type="number" id="perc-x" placeholder="20" style="padding:10px;width:80px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem">
+                <span>% de</span>
+                <input type="number" id="perc-y" placeholder="150" style="padding:10px;width:80px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem">
+                <span>=</span>
+                <strong id="perc-result1" style="font-size:1.2rem">?</strong>
+            </div>
+            <button class="btn btn-sm" onclick="calcPerc1()" style="margin-top:10px">Calculer</button>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px;margin-bottom:15px">
+            <label style="color:#aaa">X est quel % de Y ?</label><br>
+            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px">
+                <input type="number" id="perc-a" placeholder="30" style="padding:10px;width:80px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem">
+                <span>sur</span>
+                <input type="number" id="perc-b" placeholder="200" style="padding:10px;width:80px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem">
+                <span>=</span>
+                <strong id="perc-result2" style="font-size:1.2rem">?</strong>
+            </div>
+            <button class="btn btn-sm" onclick="calcPerc2()" style="margin-top:10px">Calculer</button>
+        </div>
+    </div>
+</div>
+
+<!-- CODE MORSE -->
+<div id="morse" class="page">
+    <button class="back-btn" onclick="goHome()">← Retour</button>
+    <h2>📡 Traducteur Code Morse</h2>
+    <div style="text-align:center;max-width:500px;margin:0 auto">
+        <textarea id="morse-input" placeholder="Entre du texte ou du code morse..." style="width:100%;height:100px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;resize:vertical"></textarea>
+        <div style="display:flex;gap:10px;justify-content:center;margin:15px 0">
+            <button class="btn" onclick="toMorse()">Texte → Morse</button>
+            <button class="btn btn-outline" onclick="fromMorse()">Morse → Texte</button>
+        </div>
+        <div id="morse-output" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px;min-height:60px;font-size:1.2rem;letter-spacing:2px;word-break:break-all"></div>
+        <button class="btn btn-sm btn-outline" onclick="navigator.clipboard.writeText(document.getElementById('morse-output').textContent)" style="margin-top:10px">Copier</button>
     </div>
 </div>
 
@@ -1837,6 +1979,33 @@ function copyTextTools() {
     const text = document.getElementById('texttools-output').textContent;
     if (text) navigator.clipboard.writeText(text);
 }
+
+// === POMODORO ===
+let pomoInterval=null, pomoTime=25*60, pomoRunning=false, pomoSessions=0;
+function updatePomoDisplay(){const m=Math.floor(pomoTime/60),s=pomoTime%60;document.getElementById('pomo-display').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startPomodoro(){if(pomoRunning)return;pomoRunning=true;pomoInterval=setInterval(()=>{pomoTime--;updatePomoDisplay();if(pomoTime<=0){clearInterval(pomoInterval);pomoRunning=false;pomoSessions++;document.getElementById('pomo-count').textContent=pomoSessions;try{new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQ==').play();}catch(e){}alert('Temps ecoule !');}},1000);}
+function pausePomodoro(){clearInterval(pomoInterval);pomoRunning=false;}
+function resetPomodoro(){clearInterval(pomoInterval);pomoRunning=false;pomoTime=25*60;updatePomoDisplay();}
+function setPomoMode(min,label){clearInterval(pomoInterval);pomoRunning=false;pomoTime=min*60;updatePomoDisplay();document.getElementById('pomo-status').textContent=label;}
+
+// === QR CODE ===
+function generateQR(){const text=document.getElementById('qr-input').value.trim();if(!text)return;const size=200;const url='https://api.qrserver.com/v1/create-qr-code/?size='+size+'x'+size+'&data='+encodeURIComponent(text);document.getElementById('qr-output').innerHTML='<img src="'+url+'" alt="QR Code" style="border-radius:10px;background:#fff;padding:10px"><br><a href="'+url+'" download="qrcode.png" class="btn btn-sm btn-outline" style="margin-top:10px">Telecharger</a>';}
+
+// === AGE CALCULATOR ===
+function calcAge(){const input=document.getElementById('age-input').value;if(!input)return;const birth=new Date(input),now=new Date();let years=now.getFullYear()-birth.getFullYear(),months=now.getMonth()-birth.getMonth(),days=now.getDate()-birth.getDate();if(days<0){months--;days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}if(months<0){years--;months+=12;}document.getElementById('age-result').textContent=years+' ans';const totalDays=Math.floor((now-birth)/(1000*60*60*24));document.getElementById('age-detail').innerHTML=months+' mois et '+days+' jours<br>Soit '+totalDays.toLocaleString()+' jours au total<br>Soit '+(totalDays*24).toLocaleString()+' heures';}
+
+// === BMI / IMC ===
+function calcBMI(){const w=parseFloat(document.getElementById('bmi-weight').value),h=parseFloat(document.getElementById('bmi-height').value);if(!w||!h)return;const bmi=w/((h/100)**2);document.getElementById('bmi-result').textContent=bmi.toFixed(1);let cat='',color='';if(bmi<18.5){cat='Insuffisance ponderale';color='#3498db';}else if(bmi<25){cat='Poids normal';color='#2ecc71';}else if(bmi<30){cat='Surpoids';color='#f39c12';}else{cat='Obesite';color='#e74c3c';}document.getElementById('bmi-category').innerHTML='<span style="color:'+color+'">'+cat+'</span>';}
+
+// === POURCENTAGE ===
+function calcPerc1(){const x=parseFloat(document.getElementById('perc-x').value),y=parseFloat(document.getElementById('perc-y').value);if(isNaN(x)||isNaN(y))return;document.getElementById('perc-result1').textContent=(x/100*y).toFixed(2);}
+function calcPerc2(){const a=parseFloat(document.getElementById('perc-a').value),b=parseFloat(document.getElementById('perc-b').value);if(isNaN(a)||isNaN(b)||b===0)return;document.getElementById('perc-result2').textContent=(a/b*100).toFixed(2)+'%';}
+
+// === CODE MORSE ===
+const MORSE_MAP={'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..','M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.','?':'..--..','!':'-.-.--','.':'.-.-.-',',':'--..--',' ':' / '};
+const MORSE_REV=Object.fromEntries(Object.entries(MORSE_MAP).map(([k,v])=>[v,k]));
+function toMorse(){const text=document.getElementById('morse-input').value.toUpperCase();document.getElementById('morse-output').textContent=text.split('').map(c=>MORSE_MAP[c]||c).join(' ');}
+function fromMorse(){const morse=document.getElementById('morse-input').value.trim();document.getElementById('morse-output').textContent=morse.split(' / ').map(word=>word.split(' ').map(c=>MORSE_REV[c]||c).join('')).join(' ');}
 
 // === COOKIES ===
 (function() {
