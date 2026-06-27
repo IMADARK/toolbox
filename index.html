@@ -565,7 +565,11 @@
     <header>
         <h1>ToolBox</h1>
         <p>Tes outils pratiques au meme endroit</p>
+        <div style="margin-top:12px;font-size:0.95rem;color:#667eea;font-weight:600" id="tool-counter"></div>
     </header>
+    <div style="max-width:500px;margin:0 auto 10px;padding:0 20px;position:relative;z-index:1">
+        <input type="text" id="search-tools" placeholder="🔍 Rechercher un outil..." oninput="filterTools()" style="width:100%;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,0.1);background:rgba(20,20,40,0.7);backdrop-filter:blur(10px);color:#fff;font-size:1rem">
+    </div>
     <div id="menu">
         <div class="menu-btn" onclick="showPage('wheel')">
             <span class="icon">🎡</span>
@@ -1433,6 +1437,10 @@ function goHome() {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('home').style.display = '';
 }
+
+// === SEARCH & COUNTER ===
+function filterTools(){const q=document.getElementById('search-tools').value.toLowerCase();document.querySelectorAll('.menu-btn').forEach(btn=>{const label=btn.querySelector('.label').textContent.toLowerCase();btn.style.display=label.includes(q)?'':'none';});}
+(function animateCounter(){const el=document.getElementById('tool-counter');const target=34;let current=0;const step=()=>{current++;el.textContent=current+' outils gratuits ✨';if(current<target)requestAnimationFrame(step);};step();})();
 
 // === ROUE ===
 let wheelItems = [];
