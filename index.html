@@ -22,6 +22,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧰</text></svg>">
     <!-- Structured Data for Google -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBox","url":"https://imadark.github.io/outils-en-ligne/","description":"34 outils gratuits en ligne : roue, chrono, calculatrice, convertisseur, generateur de pseudo et mot de passe, et plus.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"IMADARK"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ToolBox est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui, ToolBox est 100% gratuit. Tous les 34 outils sont accessibles sans inscription, sans abonnement et sans limite d'utilisation."}},{"@type":"Question","name":"Faut-il s'inscrire pour utiliser les outils ?","acceptedAnswer":{"@type":"Answer","text":"Non, aucune inscription n'est requise. Vous pouvez utiliser tous les outils immediatement depuis votre navigateur."}},{"@type":"Question","name":"Quels outils sont disponibles sur ToolBox ?","acceptedAnswer":{"@type":"Answer","text":"ToolBox propose 34 outils : roue aleatoire, generateur de pseudo, de personnalise, chronometre, minuteur, pile ou face, generateur de mot de passe, calculatrice, convertisseur d'unites, generateur de QR code, traducteur de code morse, test de vitesse de frappe, test de temps de reaction, calcul d'age, calcul IMC, chiffres romains, fuseaux horaires, et bien plus."}},{"@type":"Question","name":"Mes donnees sont-elles en securite ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vos notes, listes de taches et habitudes sont stockees uniquement dans votre navigateur et ne sont jamais envoyees a un serveur."}},{"@type":"Question","name":"Les outils fonctionnent-ils sur mobile ?","acceptedAnswer":{"@type":"Answer","text":"Oui, ToolBox est entierement responsive et fonctionne sur smartphone, tablette et ordinateur."}}]}</script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KQKJYFZ49"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KQKJYFZ49');</script>
@@ -535,6 +536,19 @@
         .reco-cta { font-size: 0.8rem; color: #ff9900; font-weight: 600; }
         .reco-disclosure { text-align: center; color: #555; font-size: 0.72rem; margin-top: 16px; font-style: italic; }
 
+        /* === SEO CONTENT === */
+        .seo-content { max-width: 760px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 1; line-height: 1.7; }
+        .seo-content h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 14px; text-align: center; }
+        .seo-content h3 { font-size: 1.15rem; font-weight: 700; margin: 26px 0 10px; color: #ddd; }
+        .seo-content p { color: #999; font-size: 0.95rem; margin-bottom: 12px; }
+        .seo-content strong { color: #ccc; }
+        .seo-list { list-style: none; padding: 0; }
+        .seo-list li { color: #999; font-size: 0.92rem; padding: 7px 0 7px 24px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .seo-list li::before { content: '✓'; position: absolute; left: 0; color: #667eea; font-weight: 700; }
+        .faq-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+        .faq-item strong { color: #eee; display: block; margin-bottom: 6px; }
+        .faq-item p { margin: 0; font-size: 0.9rem; }
+
         /* === SHARE BUTTONS === */
         .share-banner {
             text-align: center; margin: 20px auto; max-width: 500px;
@@ -838,6 +852,32 @@
         <p>Tu aimes ToolBox ? Soutiens le projet !</p>
         <a class="btn btn-sm" href="https://buymeacoffee.com/imadark" target="_blank" rel="noopener">☕ Buy me a coffee</a>
     </div>
+
+    <!-- CONTENU SEO -->
+    <section class="seo-content">
+        <h2>34 outils gratuits en ligne, sans inscription</h2>
+        <p>ToolBox regroupe <strong>34 outils pratiques et gratuits</strong> accessibles directement depuis votre navigateur, sans téléchargement ni inscription. Que vous ayez besoin de faire tourner une <strong>roue aléatoire</strong> pour un tirage au sort, de générer un <strong>mot de passe sécurisé</strong>, de créer un <strong>QR code</strong>, de convertir des unités ou de minuter votre travail avec un <strong>chronomètre</strong> ou un <strong>minuteur Pomodoro</strong>, tout est réuni au même endroit.</p>
+
+        <h3>Les outils les plus populaires</h3>
+        <ul class="seo-list">
+            <li><strong>Roue de la fortune</strong> — pour tirer au sort un nom, une décision ou un gagnant.</li>
+            <li><strong>Générateur de mot de passe</strong> — crée des mots de passe forts et aléatoires.</li>
+            <li><strong>Générateur de QR code</strong> — transforme n'importe quel texte ou lien en QR code.</li>
+            <li><strong>Convertisseur d'unités</strong> — longueur, poids, température et plus.</li>
+            <li><strong>Test de vitesse de frappe</strong> — mesure tes mots par minute.</li>
+            <li><strong>Calcul d'âge et IMC</strong> — des calculateurs rapides du quotidien.</li>
+            <li><strong>Traducteur code morse</strong> et <strong>convertisseur binaire</strong> — pour les curieux.</li>
+            <li><strong>Fuseaux horaires</strong> — l'heure dans 12 grandes villes en temps réel.</li>
+        </ul>
+
+        <h3>Questions fréquentes</h3>
+        <div class="faq">
+            <div class="faq-item"><strong>ToolBox est-il vraiment gratuit ?</strong><p>Oui, 100% gratuit, sans abonnement ni limite. Tous les outils sont accessibles librement.</p></div>
+            <div class="faq-item"><strong>Faut-il créer un compte ?</strong><p>Non, aucune inscription n'est nécessaire. Les outils fonctionnent immédiatement.</p></div>
+            <div class="faq-item"><strong>Mes données sont-elles privées ?</strong><p>Oui. Vos notes, tâches et habitudes restent stockées dans votre navigateur et ne sont jamais envoyées sur un serveur.</p></div>
+            <div class="faq-item"><strong>Ça marche sur téléphone ?</strong><p>Oui, le site est optimisé pour mobile, tablette et ordinateur.</p></div>
+        </div>
+    </section>
 
     <footer class="legal-footer">
         Fait avec ❤️ &mdash; ToolBox 2026 &mdash; par IMADARK<br>
