@@ -518,23 +518,29 @@
         .donate-banner p { color: #aaa; font-size: 0.9rem; margin-bottom: 12px; }
         .donate-banner .btn { font-size: 0.9rem; }
 
-        /* === PRODUITS RECOMMANDES === */
-        .reco-section { max-width: 1000px; margin: 30px auto; padding: 0 20px; position: relative; z-index: 1; }
-        .reco-section h3 { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
-        .reco-sub { text-align: center; color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
-        .reco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
-        .reco-card {
-            background: rgba(20,20,40,0.7); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;
-            padding: 20px 14px; text-align: center; text-decoration: none;
-            display: flex; flex-direction: column; gap: 8px; transition: all 0.3s;
+        /* === COLONNES PRODUITS LATERALES === */
+        .side-rail {
+            position: fixed; top: 70px; width: 170px; z-index: 5;
+            max-height: calc(100vh - 90px); overflow-y: auto;
+            display: flex; flex-direction: column; gap: 8px;
+            padding: 6px; scrollbar-width: thin;
         }
-        .reco-card:hover { border-color: rgba(255,153,0,0.5); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(255,153,0,0.12); }
-        .reco-card.hot { border-color: rgba(255,153,0,0.25); }
-        .reco-icon { font-size: 2rem; }
-        .reco-name { font-size: 0.9rem; font-weight: 600; color: #eee; }
-        .reco-cta { font-size: 0.8rem; color: #ff9900; font-weight: 600; }
-        .reco-disclosure { text-align: center; color: #555; font-size: 0.72rem; margin-top: 16px; font-style: italic; }
+        .side-rail.left { left: 12px; }
+        .side-rail.right { right: 12px; }
+        .side-rail::-webkit-scrollbar { width: 5px; }
+        .side-rail::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 5px; }
+        .rail-title { font-size: 0.78rem; font-weight: 700; color: #ff9900; text-transform: uppercase; letter-spacing: 1px; padding: 8px 6px 2px; }
+        .rail-card {
+            background: rgba(20,20,40,0.75); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+            padding: 10px 12px; text-decoration: none; color: #ddd;
+            font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px;
+            transition: all 0.25s; line-height: 1.3;
+        }
+        .rail-card span { font-size: 1.3rem; flex-shrink: 0; }
+        .rail-card:hover { border-color: rgba(255,153,0,0.5); transform: translateX(2px); color: #fff; box-shadow: 0 6px 20px rgba(255,153,0,0.12); }
+        .rail-card.hot { border-color: rgba(255,153,0,0.22); }
+        @media (max-width: 1300px) { .side-rail { display: none; } }
 
         /* === SEO CONTENT === */
         .seo-content { max-width: 760px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 1; line-height: 1.7; }
@@ -591,6 +597,38 @@
 <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Plein ecran">⛶</button>
 <div id="particles"></div>
 <div class="glow-blob"></div>
+
+<!-- COLONNE PRODUITS GAUCHE -->
+<aside class="side-rail left">
+    <div class="rail-title">☀️ Top été</div>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=ventilateur&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🌀</span>Ventilateurs</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=climatiseur+mobile&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>❄️</span>Climatiseurs</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=lunettes+de+soleil&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🕶️</span>Lunettes soleil</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=creme+solaire&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🧴</span>Crème solaire</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=piscine+gonflable&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🏊</span>Piscines</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=barbecue&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🍖</span>Barbecues</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=glaciere&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🧊</span>Glacières</a>
+    <a class="rail-card hot" href="https://www.amazon.fr/s?k=brumisateur&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>💦</span>Brumisateurs</a>
+    <div class="rail-title">🚗 Auto</div>
+    <a class="rail-card" href="https://amzn.eu/d/0crv9sEg" target="_blank" rel="noopener nofollow sponsored"><span>🔧</span>Pommeau levier Citroën C5 / Xsara Picasso</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=accessoires+voiture&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🚙</span>Accessoires auto</a>
+</aside>
+
+<!-- COLONNE PRODUITS DROITE -->
+<aside class="side-rail right">
+    <div class="rail-title">🔥 High-tech</div>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=ecouteurs+bluetooth&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🎧</span>Écouteurs Bluetooth</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=montre+connectee&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>⌚</span>Montres connectées</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=batterie+externe&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🔋</span>Batteries externes</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=enceinte+bluetooth&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🔊</span>Enceintes Bluetooth</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=clavier+mecanique&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>⌨️</span>Claviers méca</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=souris+gaming&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🖱️</span>Souris gaming</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=chargeur+rapide+usb+c&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>⚡</span>Chargeurs rapides</a>
+    <div class="rail-title">💼 Bureau</div>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=lampe+bureau+led&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>💡</span>Lampes bureau</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=chaise+bureau+ergonomique&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>🪑</span>Chaises ergo</a>
+    <a class="rail-card" href="https://www.amazon.fr/s?k=support+ordinateur+portable&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored"><span>💻</span>Supports PC</a>
+</aside>
 
 <!-- MENU PRINCIPAL -->
 <div id="home">
@@ -739,95 +777,6 @@
             <span class="icon">📅</span>
             <div class="label">Suivi d'Habitudes</div>
         </div>
-    </div>
-
-    <!-- PRODUITS RECOMMANDES (AFFILIATION AMAZON) -->
-    <div class="reco-section">
-        <h3>☀️ Sélection de l'été</h3>
-        <p class="reco-sub">Les meilleures ventes du moment et les indispensables de la saison</p>
-        <div class="reco-grid">
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=ventilateur&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🌀</span><span class="reco-name">Ventilateurs</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=climatiseur+mobile&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">❄️</span><span class="reco-name">Climatiseurs</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=lunettes+de+soleil&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🕶️</span><span class="reco-name">Lunettes de soleil</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=creme+solaire&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🧴</span><span class="reco-name">Crème solaire</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=piscine+gonflable&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🏊</span><span class="reco-name">Piscines</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=barbecue&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🍖</span><span class="reco-name">Barbecues</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=glaciere&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🧊</span><span class="reco-name">Glacières</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card hot" href="https://www.amazon.fr/s?k=brumisateur&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">💦</span><span class="reco-name">Brumisateurs</span><span class="reco-cta">Voir →</span>
-            </a>
-        </div>
-
-        <h3 style="margin-top:30px">🔥 Best-sellers high-tech</h3>
-        <p class="reco-sub">Les produits les plus achetés sur Amazon</p>
-        <div class="reco-grid">
-            <a class="reco-card" href="https://www.amazon.fr/s?k=ecouteurs+bluetooth&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🎧</span><span class="reco-name">Écouteurs Bluetooth</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=montre+connectee&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">⌚</span><span class="reco-name">Montres connectées</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=batterie+externe&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🔋</span><span class="reco-name">Batteries externes</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=enceinte+bluetooth&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🔊</span><span class="reco-name">Enceintes Bluetooth</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=clavier+mecanique&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">⌨️</span><span class="reco-name">Claviers mécaniques</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=souris+gaming&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🖱️</span><span class="reco-name">Souris gaming</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=webcam&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">📷</span><span class="reco-name">Webcams</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=disque+dur+ssd&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">💾</span><span class="reco-name">SSD & stockage</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=chargeur+rapide+usb+c&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">⚡</span><span class="reco-name">Chargeurs rapides</span><span class="reco-cta">Voir →</span>
-            </a>
-        </div>
-
-        <h3 style="margin-top:30px">💼 Bureau & productivité</h3>
-        <p class="reco-sub">Pour bosser dans les meilleures conditions</p>
-        <div class="reco-grid">
-            <a class="reco-card" href="https://www.amazon.fr/s?k=lampe+bureau+led&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">💡</span><span class="reco-name">Lampes de bureau</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=support+ordinateur+portable&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">💻</span><span class="reco-name">Supports PC</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=chaise+bureau+ergonomique&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🪑</span><span class="reco-name">Chaises ergonomiques</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=carnet+notes&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">📓</span><span class="reco-name">Carnets & agendas</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=tasse+mug+cafe&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">☕</span><span class="reco-name">Mugs & thermos</span><span class="reco-cta">Voir →</span>
-            </a>
-            <a class="reco-card" href="https://www.amazon.fr/s?k=plante+bureau&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
-                <span class="reco-icon">🪴</span><span class="reco-name">Plantes déco</span><span class="reco-cta">Voir →</span>
-            </a>
-        </div>
-
-        <p class="reco-disclosure">En tant que Partenaire Amazon, ce site réalise un bénéfice sur les achats remplissant les conditions requises.</p>
     </div>
 
     <!-- PUB ACCUEIL -->
