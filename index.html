@@ -517,6 +517,23 @@
         .donate-banner p { color: #aaa; font-size: 0.9rem; margin-bottom: 12px; }
         .donate-banner .btn { font-size: 0.9rem; }
 
+        /* === PRODUITS RECOMMANDES === */
+        .reco-section { max-width: 1000px; margin: 30px auto; padding: 0 20px; position: relative; z-index: 1; }
+        .reco-section h3 { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+        .reco-sub { text-align: center; color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
+        .reco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+        .reco-card {
+            background: rgba(20,20,40,0.7); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;
+            padding: 20px 14px; text-align: center; text-decoration: none;
+            display: flex; flex-direction: column; gap: 8px; transition: all 0.3s;
+        }
+        .reco-card:hover { border-color: rgba(255,153,0,0.5); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(255,153,0,0.12); }
+        .reco-icon { font-size: 2rem; }
+        .reco-name { font-size: 0.9rem; font-weight: 600; color: #eee; }
+        .reco-cta { font-size: 0.8rem; color: #ff9900; font-weight: 600; }
+        .reco-disclosure { text-align: center; color: #555; font-size: 0.72rem; margin-top: 16px; font-style: italic; }
+
         /* === SHARE BUTTONS === */
         .share-banner {
             text-align: center; margin: 20px auto; max-width: 500px;
@@ -707,6 +724,45 @@
             <span class="icon">📅</span>
             <div class="label">Suivi d'Habitudes</div>
         </div>
+    </div>
+
+    <!-- PRODUITS RECOMMANDES (AFFILIATION AMAZON) -->
+    <div class="reco-section">
+        <h3>🛒 Nos coups de cœur</h3>
+        <p class="reco-sub">Une sélection de produits pratiques pour le bureau et la productivité</p>
+        <div class="reco-grid">
+            <a class="reco-card" href="https://www.amazon.fr/s?k=clavier+mecanique&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
+                <span class="reco-icon">⌨️</span>
+                <span class="reco-name">Claviers mécaniques</span>
+                <span class="reco-cta">Voir sur Amazon →</span>
+            </a>
+            <a class="reco-card" href="https://www.amazon.fr/s?k=casque+audio+bureau&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
+                <span class="reco-icon">🎧</span>
+                <span class="reco-name">Casques audio</span>
+                <span class="reco-cta">Voir sur Amazon →</span>
+            </a>
+            <a class="reco-card" href="https://www.amazon.fr/s?k=souris+ergonomique&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
+                <span class="reco-icon">🖱️</span>
+                <span class="reco-name">Souris ergonomiques</span>
+                <span class="reco-cta">Voir sur Amazon →</span>
+            </a>
+            <a class="reco-card" href="https://www.amazon.fr/s?k=lampe+bureau+led&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
+                <span class="reco-icon">💡</span>
+                <span class="reco-name">Lampes de bureau</span>
+                <span class="reco-cta">Voir sur Amazon →</span>
+            </a>
+            <a class="reco-card" href="https://www.amazon.fr/s?k=carnet+notes&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
+                <span class="reco-icon">📓</span>
+                <span class="reco-name">Carnets & agendas</span>
+                <span class="reco-cta">Voir sur Amazon →</span>
+            </a>
+            <a class="reco-card" href="https://www.amazon.fr/s?k=support+ordinateur+portable&tag=imadark-21" target="_blank" rel="noopener nofollow sponsored">
+                <span class="reco-icon">💻</span>
+                <span class="reco-name">Supports PC portable</span>
+                <span class="reco-cta">Voir sur Amazon →</span>
+            </a>
+        </div>
+        <p class="reco-disclosure">En tant que Partenaire Amazon, ce site réalise un bénéfice sur les achats remplissant les conditions requises.</p>
     </div>
 
     <!-- PUB ACCUEIL -->
